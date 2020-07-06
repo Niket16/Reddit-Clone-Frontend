@@ -36,7 +36,7 @@
                 </button>
                 <span style="padding-left: 15px">New to SpringReddit? <a routerLink="/sign-up">SIGN UP</a></span>
               </span>
-              <div class="login-failed" **ngIf="isError">
+              <div class="login-failed" *ngIf='isError'>
                 <p class="login-failed-text">Login Failed. Please check your credentials and try again.</p>
               </div>
             </form>
