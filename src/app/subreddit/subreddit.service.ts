@@ -15,4 +15,7 @@ export class SubredditService {
     return this.http.get<Array<SubredditModel>>('http://localhost:8080/api/subreddit');
   }
 
+  createSubreddit(subredditModel: SubredditModel): Observable<any> {
+    return this.http.post('http://localhost:8080/api/subreddit',subredditModel, {responseType : 'text'});
+  }
 }
