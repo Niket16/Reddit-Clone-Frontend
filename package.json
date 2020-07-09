@@ -23,6 +23,7 @@
     "@fortawesome/angular-fontawesome": "^0.6.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@tinymce/tinymce-angular": "^4.0.0",
     "bootstrap": "^4.5.0",
     "ngx-toastr": "^12.1.0",
     "ngx-webstorage": "^5.0.0",
