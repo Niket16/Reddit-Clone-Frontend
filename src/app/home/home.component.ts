@@ -8,13 +8,19 @@ import { PostService } from '../shared/post.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor() {
+
+  posts: PostModel[] = [];
+  constructor(private postService: PostService) {
+      this.postService.getAllPosts().subscribe(post => {
+       this.posts = post;
+     })
+    console.log(this.posts);
     
   }
 
   ngOnInit(): void {
   }
 
-  goToPost(id){}
+  
 
 }

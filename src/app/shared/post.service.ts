@@ -8,6 +8,7 @@ import { CreatePostPayload } from '../post/create-post/create-post-payload';
   providedIn: 'root'
 })
 export class PostService {
+ 
   constructor(private http: HttpClient) { }
 
   getAllPosts(): Observable<Array<PostModel>> {
@@ -15,7 +16,15 @@ export class PostService {
   }
 
   createPost(postPayload: CreatePostPayload): Observable<any> {
-    return this.http.post('http://localhost:8080/api/posts/', postPayload);
+    return this.http.post('http://localhost:8080/api/posts/', postPayload,{responseType : 'text'});
+  }
+
+  getPost(id: number): Observable<PostModel> {
+    return this.http.get<PostModel>('http://localhost:8080/api/posts/' + id);
+  }
+
+  getAllPostsByUser(name: string): Observable<PostModel[]> {
+    return this.http.get<PostModel[]>('http://localhost:8080/api/posts/by-user/' + name);
   }
 
 
