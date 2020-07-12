@@ -23,8 +23,8 @@ export class AuthService {
 
   constructor( private httpClient : HttpClient,private localStorage: LocalStorageService) { }
   
-  signUpAPI : string = 'http://localhost:8080/api/auth/signup';
-  loginAPI : string = 'http://localhost:8080/api/auth/login';
+  signUpAPI : string = 'https://redditcloneapp.herokuapp.com/api/auth/signup';
+  loginAPI : string = 'https://redditcloneapp.herokuapp.com/api/auth/login';
 
   signup(signupRequestPayload: SignupRequestPayload): Observable<any> {
     
@@ -53,7 +53,7 @@ export class AuthService {
   }
 
   refreshToken() {
-    return this.httpClient.post<LoginResponse>('http://localhost:8080/api/auth/refresh/token',this.refreshTokenPayload)
+    return this.httpClient.post<LoginResponse>('https://redditcloneapp.herokuapp.com/api/auth/refresh/token',this.refreshTokenPayload)
       .pipe(tap(response => {
         this.localStorage.clear('authenticationToken');
         this.localStorage.clear('expiresAt');
@@ -73,7 +73,7 @@ export class AuthService {
   }
 
   logout() {
-    this.httpClient.post('http://localhost:8080/api/auth/logout', this.refreshTokenPayload,{ responseType: 'text' })
+    this.httpClient.post('https://redditcloneapp.herokuapp.com/api/auth/logout', this.refreshTokenPayload,{ responseType: 'text' })
       .subscribe(data => {
       console.log(data);
     }, error => {
