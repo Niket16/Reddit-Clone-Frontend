@@ -12,10 +12,10 @@ export class SubredditService {
   constructor(private http: HttpClient) { }
 
   getAllSubreddits(): Observable<Array<SubredditModel>> {
-    return this.http.get<Array<SubredditModel>>('http://localhost:8080/api/subreddit');
+    return this.http.get<Array<SubredditModel>>('http://https://redditcloneapp.herokuapp.com/api/subreddit');
   }
 
   createSubreddit(subredditModel: SubredditModel): Observable<any> {
-    return this.http.post('http://localhost:8080/api/subreddit',subredditModel, {responseType : 'text'});
+    return this.http.post('http://https://redditcloneapp.herokuapp.com/api/subreddit',subredditModel, {responseType : 'text'});
   }
 }
