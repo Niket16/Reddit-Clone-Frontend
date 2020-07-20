@@ -25,6 +25,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { ViewPostComponent } from './post/view-post/view-post.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
+import { GoogleLoginProvider,FacebookLoginProvider,AmazonLoginProvider,SocialLoginModule, SocialAuthServiceConfig} from 'angularx-social-login';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,13 +53,41 @@ import { UserProfileComponent } from './auth/user-profile/user-profile.component
     ToastrModule.forRoot(),
     FontAwesomeModule,
     EditorModule,
-    NgbModule
+    NgbModule,
+    SocialLoginModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }],
+  },
+  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            '218322081335-2pq0upn0uqmdbghovumk5fknmutbdrqe.apps.googleusercontent.com'
+          ),
+        },
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider('clientId'),
+        },
+        {
+          id: AmazonLoginProvider.PROVIDER_ID,
+          provider: new AmazonLoginProvider(
+            'clientId'
+          ),
+        },
+      ],
+    } as SocialAuthServiceConfig
+  }
+
+
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

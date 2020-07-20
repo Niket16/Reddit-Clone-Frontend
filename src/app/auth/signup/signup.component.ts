@@ -37,15 +37,38 @@ export class SignupComponent implements OnInit {
     this.signupRequestPayload.email = this.signupForm.get('email').value;
     this.signupRequestPayload.password = this.signupForm.get('password').value;
 
-    console.log(this.signupRequestPayload);
-    
-
+    // console.log(this.signupRequestPayload);
     this.authService.signup(this.signupRequestPayload)
-    .subscribe(data => {
-      this.router.navigate(['/login'], { queryParams: { registered: 'true' } });
-    }, () => {
-      this.toastr.error('Registration Failed! Please try again');
-    });
-  }
+        .subscribe(data =>
+          {
+            
+            if(data.toString().includes("Email"))
+            {
+              
+              console.log(data+" 1");
+              this.toastr.error("Email already exists");
+            }
 
+            else if(data.toString().includes("Username"))
+            {
+              console.log(data+" 2");
+              this.toastr.error("Username already exists");
+
+            }
+            else{
+              console.log(data);
+              this.router.navigate(['/login'],{queryParams:{registered:true}})
+
+            }
+          },
+          (error=>
+            {
+              
+              console.log("Error");
+              this.toastr.error(error,"Error",{progressBar:true});
+            })
+      )
+
+  }
+  
 }

@@ -39,11 +39,30 @@
               <div class="login-failed" *ngIf='isError'>
                 <p class="login-failed-text">Login Failed. Please check your credentials and try again.</p>
               </div>
+              <div class="login-failed" [ngStyle]="{'background-color': 'green'}" *ngIf="this.success">
+                <p class="register-success-text">{{registerSuccessMessage}}</p>   
+           </div> 
             </form>
           </div>
         </div>
       </div>
       <div class="col-md-3"></div>
+      <!-- <div>
+        <button (click)= "signIn2()">Google</button>
+    </div> -->
+    <!-- <button class="loginBtn loginBtn--google"  (click)= "signIn2()">
+      Login with Google
+    </button> -->
+    <div>
+       Also Login with
+      <ul class="social-network social-circle">
+          <!-- <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li> -->
+          <!-- <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li> -->
+          <!-- <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li> -->
+          <li><a  class="icoGoogle" title="Google +"><i class="fa fa-google-plus" (click)= "signIn2()"></i></a></li>
+          <!-- <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li> -->
+      </ul>				
+</div>
     </div>
   </div>
   

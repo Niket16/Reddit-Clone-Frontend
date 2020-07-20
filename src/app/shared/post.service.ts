@@ -12,19 +12,19 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getAllPosts(): Observable<Array<PostModel>> {
-    return this.http.get<Array<PostModel>>('https://redditcloneapp.herokuapp.com/api/posts/');
+    return this.http.get<Array<PostModel>>('http://localhost:8080/api/posts/');
   }
 
   createPost(postPayload: CreatePostPayload): Observable<any> {
-    return this.http.post('https://redditcloneapp.herokuapp.com/api/posts/', postPayload,{responseType : 'text'});
+    return this.http.post('http://localhost:8080/api/posts/', postPayload,{responseType : 'text'});
   }
 
   getPost(id: number): Observable<PostModel> {
-    return this.http.get<PostModel>('https://redditcloneapp.herokuapp.com/api/posts/' + id);
+    return this.http.get<PostModel>('http://localhost:8080/api/posts/' + id);
   }
 
   getAllPostsByUser(name: string): Observable<PostModel[]> {
-    return this.http.get<PostModel[]>('https://redditcloneapp.herokuapp.com/api/posts/by-user/' + name);
+    return this.http.get<PostModel[]>('http://localhost:8080/api/posts/by-user/' + name);
   }
 
 
