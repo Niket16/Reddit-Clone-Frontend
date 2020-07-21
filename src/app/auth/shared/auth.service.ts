@@ -60,8 +60,19 @@ export class AuthService {
     }
     
     ))
+  }
+  amazonLogin(token:String) : Observable<boolean>{
+    return this.httpClient.post<LoginResponse>("https://redditcloneapp.herokuapp.com/api/auth/amazon/",{"token":token}).pipe(map(data =>{
+      this.localStorage.store('authenticationToken',data.authenticationToken);
+      this.localStorage.store('expiresAt',data.expireAt);
+      this.localStorage.store('refreshToken',data.refreshToken);
+      this.localStorage.store('username',data.username);
+      this.loggedIn.emit(true);
+      this.username.emit(data.username);
+      return true;
+    }
     
-  
+    ))
   }
 
   getJwtToken() {

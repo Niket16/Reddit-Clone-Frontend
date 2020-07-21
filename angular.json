@@ -121,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Reddit-Clone-Frontend"
+    }
+  },
+  "defaultProject": "Reddit-Clone-Frontend",
+  "cli": {
+    "analytics": false
+  }
 }

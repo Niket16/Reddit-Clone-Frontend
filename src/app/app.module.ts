@@ -61,6 +61,7 @@ import { GoogleLoginProvider,FacebookLoginProvider,AmazonLoginProvider,SocialLog
     useClass: TokenInterceptor,
     multi: true
   },
+  
   {
     provide: 'SocialAuthServiceConfig',
     useValue: {
@@ -77,9 +78,14 @@ import { GoogleLoginProvider,FacebookLoginProvider,AmazonLoginProvider,SocialLog
           provider: new FacebookLoginProvider('clientId'),
         },
         {
+          
+          
           id: AmazonLoginProvider.PROVIDER_ID,
-          provider: new AmazonLoginProvider(
-            'clientId'
+          provider: new AmazonLoginProvider('amzn1.application-oa2-client.9e4e59a9ae4645c4b57d8e448a003e3a',{
+            scope: 'profile',
+            return_scopes: true,
+            enable_profile_selector: true
+          }
           ),
         },
       ],
@@ -88,7 +94,10 @@ import { GoogleLoginProvider,FacebookLoginProvider,AmazonLoginProvider,SocialLog
 
 
 ],
+
   bootstrap: [AppComponent]
-})
+}
+)
+
 export class AppModule { }
  
